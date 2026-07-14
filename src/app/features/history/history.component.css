@@ -1,0 +1,220 @@
+/* History Page */
+.history-header {
+  margin-bottom: var(--space-xl);
+}
+
+.history-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg in oklch, var(--color-primary), hsl(200, 85%, 65%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Date Strip */
+.date-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 0.75rem 1rem;
+  margin-bottom: var(--space-xl);
+}
+
+.date-nav-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-glass);
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  line-height: 1;
+  padding-bottom: 2px;
+}
+
+.date-nav-btn:hover:not(.disabled) {
+  background: var(--surface-glass-hover);
+  color: var(--color-text-primary);
+}
+
+.date-nav-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.date-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.date-weekday {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+
+.date-full {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* History Sections */
+.history-section {
+  margin-bottom: var(--space-xl);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Feeding Cards */
+.history-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: 1rem 1.25rem;
+}
+
+.history-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 5rem;
+}
+
+.history-time {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.history-duration {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.history-card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.breast-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.breast-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.left-chip {
+  background: hsla(35, 90%, 65%, 0.15);
+  color: var(--color-left);
+  border: 1px solid hsla(35, 90%, 65%, 0.2);
+}
+
+.right-chip {
+  background: hsla(200, 85%, 65%, 0.15);
+  color: var(--color-right);
+  border: 1px solid hsla(200, 85%, 65%, 0.2);
+}
+
+.history-ended {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Diaper rows */
+.diaper-count-row {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.diaper-count-chip {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.pee-chip {
+  background: hsla(52, 90%, 62%, 0.12);
+  border-color: hsla(52, 90%, 62%, 0.3);
+  color: var(--color-pee);
+}
+
+.poop-chip {
+  background: hsla(28, 55%, 52%, 0.12);
+  border-color: hsla(28, 55%, 52%, 0.3);
+  color: var(--color-poop);
+}
+
+.both-chip {
+  background: hsla(160, 55%, 55%, 0.12);
+  border-color: hsla(160, 55%, 55%, 0.3);
+  color: var(--color-both);
+}
+
+.diaper-row {
+  align-items: center;
+  gap: 1rem;
+}
+
+.diaper-icon-lg {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.diaper-type-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.pee-label { color: var(--color-pee); }
+.poop-label { color: var(--color-poop); }
+.both-label { color: var(--color-both); }
+
+.empty-day {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  background: var(--surface-glass);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+}
+
+.skeleton-list {
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .date-nav-btn { transition: none; }
+}

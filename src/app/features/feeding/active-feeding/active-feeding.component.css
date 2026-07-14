@@ -1,0 +1,265 @@
+/* Active Feeding Page */
+.feeding-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) var(--space-md);
+  background: var(--color-bg);
+  position: relative;
+
+  /* Radial glow that changes with active breast */
+  background-image:
+    radial-gradient(ellipse 70% 40% at 50% 0%, hsla(260, 60%, 30%, 0.2), transparent);
+  background-attachment: fixed;
+}
+
+.feeding-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.feeding-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+/* Total Timer */
+.total-timer-section {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  margin-bottom: var(--space-xl);
+}
+
+.timer-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* Breast Grid */
+.breast-section {
+  margin-bottom: var(--space-xl);
+}
+
+.breast-section .section-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.breast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.breast-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border-radius: var(--radius-2xl);
+  background: var(--surface-glass);
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Active state — Left breast (amber) */
+.breast-btn.breast-active:nth-child(1),
+.breast-btn.breast-active[id="btn-breast-left"] {
+  background: hsla(35, 90%, 65%, 0.12);
+  border-color: var(--color-left);
+  box-shadow: 0 0 40px hsla(35, 90%, 65%, 0.3), inset 0 0 30px hsla(35, 90%, 65%, 0.05);
+}
+
+/* Active state — Right breast (blue) */
+.breast-btn.breast-active:nth-child(2),
+.breast-btn.breast-active[id="btn-breast-right"] {
+  background: hsla(200, 85%, 65%, 0.12);
+  border-color: var(--color-right);
+  box-shadow: 0 0 40px hsla(200, 85%, 65%, 0.3), inset 0 0 30px hsla(200, 85%, 65%, 0.05);
+}
+
+.breast-btn.breast-inactive {
+  opacity: 0.45;
+  transform: scale(0.96);
+}
+
+.breast-btn:active {
+  transform: scale(0.93) !important;
+}
+
+/* Animated pulse ring */
+.breast-pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.breast-btn[id="btn-breast-left"] .breast-pulse-ring.visible {
+  border-color: var(--color-left);
+  opacity: 1;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.breast-btn[id="btn-breast-right"] .breast-pulse-ring.visible {
+  border-color: var(--color-right);
+  opacity: 1;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.06); opacity: 0; }
+  100% { transform: scale(1.06); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breast-pulse-ring { animation: none !important; }
+  .breast-btn { transition: opacity 0.2s, border-color 0.2s; }
+}
+
+.breast-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.breast-btn.breast-active .breast-icon {
+  transform: scale(1.15);
+}
+
+.breast-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.breast-time {
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+}
+
+.breast-btn[id="btn-breast-left"].breast-active .breast-time { color: var(--color-left); }
+.breast-btn[id="btn-breast-right"].breast-active .breast-time { color: var(--color-right); }
+
+.switch-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-md);
+}
+
+/* Segments Breakdown */
+.segments-section {
+  margin-bottom: var(--space-xl);
+}
+
+.segments-section .section-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.segments-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.25rem;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bar-label {
+  width: 3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: right;
+}
+
+.bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-left  { background: linear-gradient(to right in oklch, hsl(35, 80%, 55%), var(--color-left)); }
+.bar-right { background: linear-gradient(to right in oklch, hsl(200, 75%, 55%), var(--color-right)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill { transition: none; }
+}
+
+.bar-time {
+  width: 4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* End Button */
+.end-section {
+  margin-top: auto;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 5rem);
+}
+
+.end-btn {
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+/* No Active Feeding */
+.no-feeding {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  color: var(--color-text-muted);
+}
