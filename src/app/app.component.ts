@@ -10,8 +10,12 @@ import { SupabaseService } from './core/services/supabase.service';
     <router-outlet />
 
     @if (isLoggedIn()) {
-      <nav class="nav-bar" aria-label="Main navigation">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+      <nav class="nav-bar" [class.collapsed]="isMenuCollapsed" aria-label="Main navigation">
+        <button class="nav-handle" (click)="toggleMenu()" aria-label="Toggle Menu">
+          <div class="handle-bar"></div>
+        </button>
+        <div class="nav-content">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
            class="nav-item" id="nav-home" aria-label="Dashboard">
           <span class="nav-icon">🏠</span>
           <span>Home</span>
@@ -25,6 +29,7 @@ import { SupabaseService } from './core/services/supabase.service';
           <span class="nav-icon">🚪</span>
           <span>Sign Out</span>
         </button>
+        </div>
       </nav>
     }
   `,
@@ -35,6 +40,11 @@ import { SupabaseService } from './core/services/supabase.service';
 export class AppComponent {
   private supabase = inject(SupabaseService);
   isLoggedIn = computed(() => !!this.supabase.user());
+  isMenuCollapsed = true;
+
+  toggleMenu(): void {
+    this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
 
   async signOut(): Promise<void> {
     await this.supabase.signOut();
