@@ -278,6 +278,12 @@
   gap: var(--space-sm);
 }
 
+.breast-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
 .diaper-btn, .breast-pick-btn {
   display: flex;
   flex-direction: column;

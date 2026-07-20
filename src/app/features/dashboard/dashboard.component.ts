@@ -137,7 +137,7 @@ import { DatePipe } from '@angular/common';
           <div class="diaper-sheet" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Start feeding">
             <div class="sheet-handle"></div>
             <h2 class="sheet-title">Which breast?</h2>
-            <div class="diaper-buttons">
+            <div class="breast-buttons">
               <button class="breast-pick-btn left" (click)="beginFeeding('left')" id="btn-pick-left">
                 <span class="diaper-emoji">←</span>
                 <span class="diaper-label">Left</span>

@@ -15,9 +15,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styles: [`
     .stat-card {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
+      gap: 0.25rem;
+      padding: 1rem 0.5rem;
+      text-align: center;
       background: var(--surface-glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -38,6 +41,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
+      align-items: center;
     }
     .stat-value {
       font-size: 1.75rem;
