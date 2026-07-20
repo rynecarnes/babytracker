@@ -47,12 +47,12 @@ export class FeedingService implements OnDestroy {
     );
   });
 
-  /** Seconds since the last feeding ended (null if never fed) */
+  /** Seconds since the last feeding started (null if never fed) */
   readonly secondsSinceLastFeeding = computed(() => {
     this._tick();
     const last = this._lastFeeding();
-    if (!last?.ended_at) return null;
-    return Math.floor((Date.now() - new Date(last.ended_at).getTime()) / 1000);
+    if (!last?.started_at) return null;
+    return Math.floor((Date.now() - new Date(last.started_at).getTime()) / 1000);
   });
 
   constructor() {
